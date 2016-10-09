@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="primary/Hibernate">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="online_shop">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="chess"/>
+    <schema id="3" name="information_schema"/>
+    <schema id="4" name="mysql"/>
+    <schema id="5" name="performance_schema"/>
+    <schema id="6" name="shop"/>
+    <schema id="7" name="sys"/>
+    <schema id="8" name="aeroport"/>
+    <table id="9" parent="1" name="Customer"/>
+    <table id="10" parent="1" name="Offer"/>
+    <table id="11" parent="1" name="Product"/>
+    <table id="12" parent="1" name="offer_product"/>
+    <column id="13" parent="9" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="14" parent="9" name="city">
+      <mandatory>1</mandatory>
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="15" parent="9" name="fathername">
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="16" parent="9" name="firstname">
+      <mandatory>1</mandatory>
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="17" parent="9" name="number">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="18" parent="9" name="phone">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="19" parent="9" name="province">
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="20" parent="9" name="region">
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="21" parent="9" name="secondname">
+      <mandatory>1</mandatory>
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="22" parent="9" name="street">
+      <data-type>char(128)|0</data-type>
+    </column>
+    <key id="23" parent="9" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="24" parent="10" name="offer_ID">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="25" parent="10" name="offer_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="26" parent="10" name="offer_status">
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="27" parent="10" name="customer_ID">
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <index id="28" parent="10" name="FK_bgm9glfqvar4sndyijhm5dmdj">
+      <columns>customer_ID</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="29" parent="10" name="PRIMARY">
+      <columns>offer_ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="30" parent="10" name="FK_bgm9glfqvar4sndyijhm5dmdj">
+      <columns>customer_ID</columns>
+      <ref-key>~.Customer.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="31" parent="11" name="product_ID">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="32" parent="11" name="product_code">
+      <mandatory>1</mandatory>
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="33" parent="11" name="product_name">
+      <mandatory>1</mandatory>
+      <data-type>char(128)|0</data-type>
+    </column>
+    <column id="34" parent="11" name="product_number">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="35" parent="11" name="product_price">
+      <mandatory>1</mandatory>
+      <data-type>float|0</data-type>
+    </column>
+    <key id="36" parent="11" name="PRIMARY">
+      <columns>product_ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="37" parent="12" name="product_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <column id="38" parent="12" name="offer_id">
+      <mandatory>1</mandatory>
+      <data-type>bigint(20)|0</data-type>
+    </column>
+    <index id="39" parent="12" name="FK_eomac96n6bb2xp7xdf03oxtie">
+      <columns>product_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="40" parent="12" name="FK_fxod8acja43y8mfe7cn6i2v9v">
+      <columns>offer_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <foreign-key id="41" parent="12" name="FK_eomac96n6bb2xp7xdf03oxtie">
+      <columns>product_id</columns>
+      <ref-key>~.Product.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="42" parent="12" name="FK_fxod8acja43y8mfe7cn6i2v9v">
+      <columns>offer_id</columns>
+      <ref-key>~.Offer.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+  </database-model>
+</dataSource>
