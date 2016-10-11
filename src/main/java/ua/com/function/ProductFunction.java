@@ -1,43 +1,37 @@
 package ua.com.function;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ua.com.entity.Product;
 import ua.com.interfaces.ProductInterface;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Scanner;
 
 /**
  * Created by devnull on 09.10.16.
  */
+@Repository
 public class ProductFunction implements ProductInterface{
 
-    private static EntityManagerFactory fac;
-    private static EntityManager man;
+    @PersistenceContext(name="primary")
+    private EntityManager man;
     private final static String productTable = " Product ";
     private Scanner sc = new Scanner(System.in);
 
-    static{
-        fac = Persistence.createEntityManagerFactory("primary");
-        man = fac.createEntityManager();
-    }
 
-    @Override
+    @Transactional
     public void addProduct(Product product){
-        man.getTransaction().begin();
         man.persist(product);
-        man.getTransaction().commit();
     }
 
-    @Override
+    @Transactional
     public List<Product> showAllProducts(){
-        return man.createQuery("select p from"+productTable+"p").getResultList();
+        return man.createQuery("from"+productTable+"p").getResultList();
     }
 
-    @Override
+    @Transactional
     public Product findProduct(String product_code){
         Product product = null;
         try{
@@ -48,7 +42,7 @@ public class ProductFunction implements ProductInterface{
         return product;
     }
 
-    @Override
+    @Transactional
     public void deleteProduct(String product_code){
         Product product = null;
         try{
@@ -61,7 +55,7 @@ public class ProductFunction implements ProductInterface{
         }
     }
 
-    @Override
+    @Transactional
     public void sellProduct(String product_code, int number){
         Product product = null;
         try{
@@ -70,8 +64,6 @@ public class ProductFunction implements ProductInterface{
             System.out.println("Не найден товар с данным кодом");
         }
         product.setProduct_number(product.getProduct_number()-number);
-        man.getTransaction().begin();
         man.merge(product);
-        man.getTransaction().commit();
     }
 }

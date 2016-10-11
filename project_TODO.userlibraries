@@ -12,6 +12,9 @@
   <library name="Maven: javax.persistence:persistence-api:1.0.2">
     <archive path="/home/devnull/.m2/repository/javax/persistence/persistence-api/1.0.2/persistence-api-1.0.2.jar" />
   </library>
+  <library name="Maven: javax.servlet:javax.servlet-api:3.1.0">
+    <archive path="/home/devnull/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar" />
+  </library>
   <library name="Maven: mysql:mysql-connector-java:5.1.36">
     <archive path="/home/devnull/.m2/repository/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar" />
   </library>

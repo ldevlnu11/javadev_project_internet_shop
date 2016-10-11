@@ -1,11 +1,19 @@
 package ua.com.control;
 
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ua.com.entity.Customer;
 import ua.com.entity.Offer;
 import ua.com.entity.Product;
+import ua.com.entity.User;
 import ua.com.function.CustomerFunction;
 import ua.com.function.OfferFunction;
 import ua.com.function.ProductFunction;
+import ua.com.function.UserFunction;
+import ua.com.service.CustomerFuncService;
+import ua.com.service.OfferFuncService;
+import ua.com.service.ProductFuncService;
+import ua.com.service.UserFuncService;
 
 import javax.persistence.*;
 import javax.sound.midi.SysexMessage;
@@ -17,23 +25,26 @@ import java.util.Scanner;
 public class Main{
 
     private static Scanner sc;
-    private static OfferFunction offerFunction;
-    private static CustomerFunction customerFunction;
-    private static ProductFunction productFunction;
-    private static boolean x;
+
+    private static boolean isActive;
     private static boolean xCustomer;
     private static boolean xProduct;
     private static boolean xOffer;
 
     static{
         sc = new Scanner(System.in);
-        offerFunction = new OfferFunction();
-        customerFunction = new CustomerFunction();
-        productFunction = new ProductFunction();
-        x = true;
+        isActive = true;
+        xOffer = true;
+        xProduct = true;
+        xCustomer = true;
     }
     public static void main(String[] args){
-        while(x){
+        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("appContext.xml");;
+        OfferFuncService offerFunction = (OfferFuncService) context.getBean("OfferService");
+        CustomerFuncService customerFunction = (CustomerFuncService) context.getBean("CustomerService");
+        ProductFuncService productFunction = (ProductFuncService) context.getBean("ProductService");
+        UserFuncService userFunction = (UserFuncService) context.getBean("UserService");
+        while(isActive){
             xCustomer = true;
             xProduct = true;
             xOffer = true;

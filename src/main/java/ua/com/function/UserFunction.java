@@ -1,38 +1,32 @@
 package ua.com.function;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ua.com.entity.User;
 import ua.com.interfaces.UserInterface;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by devnull on 09.10.16.
  */
+@Repository
 public class UserFunction implements UserInterface{
-    private static EntityManagerFactory fac;
-    private static EntityManager man;
+    @PersistenceContext(name="primary")
+    private EntityManager man;
     private final static String userTable = " User ";
-    static{
-        fac = Persistence.createEntityManagerFactory("primary");
-        man = fac.createEntityManager();
-    }
-    @Override
+    @Transactional
     public void createUser(User user){
-        man.getTransaction().begin();
         man.persist(user);
-        man.getTransaction().commit();
     }
 
-    @Override
+    @Transactional
     public List<UserInterface> getUsers(){
-        return man.createQuery("select u from"+userTable+"u").getResultList();
+        return man.createQuery("from"+userTable+"u").getResultList();
     }
 
-    @Override
+    @Transactional
     public void deleteUser(String login){
         User user = null;
         try{

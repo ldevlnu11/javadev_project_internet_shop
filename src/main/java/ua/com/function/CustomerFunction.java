@@ -1,43 +1,36 @@
 package ua.com.function;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ua.com.entity.Customer;
 import ua.com.interfaces.CustomerInterface;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Scanner;
 
 /**
  * Created by devnull on 09.10.16.
  */
+@Repository
 public class CustomerFunction implements CustomerInterface{
 
-    private static EntityManagerFactory fac;
-    private static EntityManager man;
+    @PersistenceContext(name="primary")
+    private EntityManager man;
     private final static String customerTable = " Customer ";
     private Scanner sc = new Scanner(System.in);
 
-    static{
-        fac = Persistence.createEntityManagerFactory("primary");
-        man = fac.createEntityManager();
-    }
-
-    @Override
+    @Transactional
     public void createCustomer(Customer customer){
-        man.getTransaction().begin();
         man.persist(customer);
-        man.getTransaction().commit();
     }
 
-    @Override
+    @Transactional
     public List<Customer> showAllCustomers(){
-        return man.createQuery("select c from" + customerTable + "c").getResultList();
+        return man.createQuery("from" + customerTable + "c").getResultList();
     }
 
-    @Override
+    @Transactional
     public Customer findCustomer(String name){
         Customer customer = null;
         try{
@@ -49,7 +42,7 @@ public class CustomerFunction implements CustomerInterface{
         return customer;
     }
 
-    @Override
+    @Transactional
     public void deleteCustomer(String firstname, String secondname){
         Customer customer = null;
         try{
@@ -60,13 +53,11 @@ public class CustomerFunction implements CustomerInterface{
             System.out.println("Пользователь с данным именем и фамилией не найден.");
         }
         if(customer != null){
-            man.getTransaction().begin();
             man.remove(customer);
-            man.getTransaction().commit();
         }
     }
 
-    @Override
+    @Transactional
     public void updateCustomer(String firstname, String secondname){
         Customer customer = null;
         try{
@@ -135,10 +126,7 @@ public class CustomerFunction implements CustomerInterface{
                         break;
                     }
                 }
-                man.getTransaction().begin();
                 man.merge(customer);
-                man.getTransaction().commit();
-
             }
         }
     }

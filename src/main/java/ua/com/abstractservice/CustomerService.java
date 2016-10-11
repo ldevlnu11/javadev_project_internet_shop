@@ -1,0 +1,17 @@
+package ua.com.abstractservice;
+
+import ua.com.entity.Customer;
+
+import java.util.List;
+
+/**
+ * Created by devnull on 11.10.16.
+ */
+public interface CustomerService{
+
+    void createCustomer(Customer customer);
+    List<Customer> showAllCustomers();
+    Customer findCustomer(String name);
+    void deleteCustomer(String firstname, String secondname);
+    void updateCustomer(String firstname, String secondname);
+}

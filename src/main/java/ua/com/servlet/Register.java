@@ -24,12 +24,12 @@ public class Register extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         String firstname, secondname, login, email, phone, password;
-        firstname = req.getParameter("firstname");
-        secondname = req.getParameter("secondname");
-        login = req.getParameter("login");
-        email = req.getParameter("email");
-        phone = req.getParameter("phone");
-        password = req.getParameter("password");
+        firstname = req.getParameter("reg_fname");
+        secondname = req.getParameter("reg_sname");
+        login = req.getParameter("reg_login");
+        email = req.getParameter("reg_email");
+        phone = req.getParameter("reg_phone");
+        password = req.getParameter("reg_password");
         System.out.println(firstname);
         System.out.println(secondname);
         System.out.println(login);
@@ -37,6 +37,7 @@ public class Register extends HttpServlet{
         System.out.println(phone);
         System.out.println(password);
         userFunction.createUser(new User(firstname, secondname, login, email, phone, password));
+        req.getRequestDispatcher("login.jsp").forward(req, resp);
     }
 
 }

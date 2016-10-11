@@ -1,42 +1,39 @@
 package ua.com.function;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ua.com.entity.Offer;
 import ua.com.interfaces.OfferInterface;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Scanner;
 
 /**
  * Created by devnull on 09.10.16.
  */
+@Repository
 public class OfferFunction implements OfferInterface{
-
-    private static EntityManagerFactory fac;
-    private static EntityManager man;
+    @PersistenceContext(name="primary")
+    private EntityManager man;
     private final static String offerTable = " Offer ";
     private Scanner sc = new Scanner(System.in);
 
-    static{
-        fac = Persistence.createEntityManagerFactory("primary");
-        man = fac.createEntityManager();
-    }
 
-    @Override
+    @Transactional
     public void createOffer(Offer offer){
-        man.getTransaction().begin();
         man.persist(offer);
-        man.getTransaction().commit();
     }
 
-    @Override
+    @Transactional
     public List<Offer> showAllOffers(){
-        return man.createQuery("select o from"+offerTable+"o").getResultList();
+        return man.createQuery("from"+offerTable+"o").getResultList();
     }
 
-    @Override
+    @Transactional
     public void deleteComplitedOffers(){
         List<Offer> complitedOffers = man.createQuery("select o from"+offerTable+"o where o.offer_status = 'Неотправлен'").getResultList();
         if(complitedOffers != null){
@@ -44,7 +41,7 @@ public class OfferFunction implements OfferInterface{
         }
     }
 
-    @Override
+    @Transactional
     public List<Offer> findUncomplitedOffers(){
         return man.createQuery("select o from"+offerTable+"o where o.offer_status = 'Отправлен'").getResultList();
     }
