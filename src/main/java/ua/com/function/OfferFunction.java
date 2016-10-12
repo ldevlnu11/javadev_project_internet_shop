@@ -20,9 +20,6 @@ public class OfferFunction implements OfferInterface{
     @PersistenceContext(name="primary")
     private EntityManager man;
     private final static String offerTable = " Offer ";
-    private Scanner sc = new Scanner(System.in);
-
-
     @Transactional
     public void createOffer(Offer offer){
         man.persist(offer);
@@ -35,14 +32,16 @@ public class OfferFunction implements OfferInterface{
 
     @Transactional
     public void deleteComplitedOffers(){
-        List<Offer> complitedOffers = man.createQuery("select o from"+offerTable+"o where o.offer_status = 'Неотправлен'").getResultList();
+        List<Offer> complitedOffers = man.createQuery("select o from"+offerTable+"o where o.offer_status = 'Отправлено'").getResultList();
         if(complitedOffers != null){
-            man.remove(complitedOffers);
+            for(Offer offer: complitedOffers){
+                man.remove(offer);
+            }
         }
     }
 
     @Transactional
     public List<Offer> findUncomplitedOffers(){
-        return man.createQuery("select o from"+offerTable+"o where o.offer_status = 'Отправлен'").getResultList();
+        return man.createQuery("select o from"+offerTable+"o where o.offer_status = 'Неотправлен'").getResultList();
     }
 }

@@ -27,7 +27,7 @@
 
     <!-- Description of entityManagerFactory -->
     <!-- Опис entityManagerFactory bean -->
-    <bean id="entityManagerFactory"
+    <bean id="EntityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
@@ -41,6 +41,6 @@
     <!-- Description of transactionManager bean for annotation transactional -->
     <!-- Опис  transactionManager bean для анотації transactional -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory"></property>
+        <property name="entityManagerFactory" ref="EntityManagerFactory"></property>
     </bean>
 </beans>

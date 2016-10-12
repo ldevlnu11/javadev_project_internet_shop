@@ -25,11 +25,15 @@ import java.util.Scanner;
 public class Main{
 
     private static Scanner sc;
-
     private static boolean isActive;
     private static boolean xCustomer;
     private static boolean xProduct;
     private static boolean xOffer;
+    private static ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("appContext.xml");
+    private static OfferFuncService offerFunction = (OfferFuncService) context.getBean("OfferService");
+    private static CustomerFuncService customerFunction = (CustomerFuncService) context.getBean("CustomerService");
+    private static ProductFuncService productFunction = (ProductFuncService) context.getBean("ProductService");
+    public static UserFuncService userFunction = (UserFuncService) context.getBean("UserService");
 
     static{
         sc = new Scanner(System.in);
@@ -38,12 +42,10 @@ public class Main{
         xProduct = true;
         xCustomer = true;
     }
+
+
     public static void main(String[] args){
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("appContext.xml");;
-        OfferFuncService offerFunction = (OfferFuncService) context.getBean("OfferService");
-        CustomerFuncService customerFunction = (CustomerFuncService) context.getBean("CustomerService");
-        ProductFuncService productFunction = (ProductFuncService) context.getBean("ProductService");
-        UserFuncService userFunction = (UserFuncService) context.getBean("UserService");
+
         while(isActive){
             xCustomer = true;
             xProduct = true;
@@ -55,8 +57,7 @@ public class Main{
                         showFunctionalCustomer();
                         switch(sc.next()){
                             case "1":{
-                                String firstname, secondname, fathername, city, province, region, street, phone;
-                                int number;
+                                String firstname, secondname, fathername, city, province, region, street, phone; int number;
                                 System.out.println("Введите имя");
                                 firstname = sc.next();
                                 System.out.println("Введите фамилию");

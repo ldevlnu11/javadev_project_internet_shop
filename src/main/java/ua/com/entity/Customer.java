@@ -32,10 +32,9 @@ public class Customer{
     @OneToMany(mappedBy = "customer")
     private List<Offer> offerList = new ArrayList<Offer>();
 
-
     public Customer(){
-    }
 
+    }
     public Customer(String firstname, String secondname, String fathername, String phone, String city, String province, String region, String street, int number){
         this.firstname = firstname;
         this.secondname = secondname;

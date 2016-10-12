@@ -22,7 +22,7 @@ public class UserFunction implements UserInterface{
     }
 
     @Transactional
-    public List<UserInterface> getUsers(){
+    public List<User> getUsers(){
         return man.createQuery("from"+userTable+"u").getResultList();
     }
 

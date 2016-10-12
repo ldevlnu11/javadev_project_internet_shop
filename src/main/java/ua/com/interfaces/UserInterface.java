@@ -10,6 +10,6 @@ import java.util.List;
 public interface UserInterface{
 
     void createUser(User user);
-    List<UserInterface> getUsers();
+    List<User> getUsers();
     void deleteUser(String login);
 }

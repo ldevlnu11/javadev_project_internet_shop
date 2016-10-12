@@ -16,7 +16,6 @@ public class Offer{
     @Column(columnDefinition = "NCHAR(128)")
     private String offer_status;
     private Date offer_date = new Date(System.currentTimeMillis());
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "offer_product", joinColumns = @JoinColumn(name = "offer_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> productList;

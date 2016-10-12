@@ -1,7 +1,6 @@
 package ua.com.abstractservice;
 
 import ua.com.entity.User;
-import ua.com.interfaces.UserInterface;
 
 import java.util.List;
 
@@ -11,6 +10,6 @@ import java.util.List;
 public interface UserService{
 
     void createUser(User user);
-    List<UserInterface> getUsers();
+    List<User> getUsers();
     void deleteUser(String login);
 }

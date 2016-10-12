@@ -7,7 +7,6 @@ import ua.com.interfaces.ProductInterface;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by devnull on 09.10.16.
@@ -18,7 +17,6 @@ public class ProductFunction implements ProductInterface{
     @PersistenceContext(name="primary")
     private EntityManager man;
     private final static String productTable = " Product ";
-    private Scanner sc = new Scanner(System.in);
 
 
     @Transactional

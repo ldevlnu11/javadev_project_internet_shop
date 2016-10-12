@@ -11,7 +11,7 @@
     <title>Login</title>
 </head>
 <body>
-<form method="POST">
+<form method="POST" action="log">
     <table>
         <tr>
             <td><label>Login:</label></td>

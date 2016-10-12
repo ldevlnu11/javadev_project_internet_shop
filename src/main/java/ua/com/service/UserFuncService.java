@@ -15,7 +15,7 @@ import java.util.List;
 public class UserFuncService implements UserService{
 
     @Autowired
-    private UserService userService;
+    private UserInterface userService;
 
     @Override
     public void createUser(User user){
@@ -23,7 +23,7 @@ public class UserFuncService implements UserService{
     }
 
     @Override
-    public List<UserInterface> getUsers(){
+    public List<User> getUsers(){
         return userService.getUsers();
     }
 
