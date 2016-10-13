@@ -10,6 +10,7 @@ import ua.com.function.CustomerFunction;
 import ua.com.function.OfferFunction;
 import ua.com.function.ProductFunction;
 import ua.com.function.UserFunction;
+import ua.com.gui.GUI;
 import ua.com.service.CustomerFuncService;
 import ua.com.service.OfferFuncService;
 import ua.com.service.ProductFuncService;
@@ -17,6 +18,7 @@ import ua.com.service.UserFuncService;
 
 import javax.persistence.*;
 import javax.sound.midi.SysexMessage;
+import javax.swing.*;
 import java.util.Scanner;
 
 /**
@@ -46,6 +48,8 @@ public class Main{
 
     public static void main(String[] args){
 
+        new GUI().run();
+
         while(isActive){
             xCustomer = true;
             xProduct = true;
@@ -53,7 +57,7 @@ public class Main{
             showFunctional();
             switch(sc.next()){
                 case "1":{
-                    while(xCustomer){
+                    while(!xCustomer){
                         showFunctionalCustomer();
                         switch(sc.next()){
                             case "1":{
