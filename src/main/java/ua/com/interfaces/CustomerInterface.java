@@ -11,8 +11,9 @@ public interface CustomerInterface{
 
     void createCustomer(Customer customer);
     List<Customer> showAllCustomers();
-    Customer findCustomer(String name);
+    List<Customer> findCustomer(String name);
     void deleteCustomer(String firstname, String secondname);
     void updateCustomer(String firstname, String secondname);
+    void setCustomer(Customer customer);
 
 }

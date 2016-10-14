@@ -29,7 +29,7 @@ public class CustomerFuncService implements CustomerService{
     }
 
     @Override
-    public Customer findCustomer(String name){
+    public List<Customer> findCustomer(String name){
         return customerInterface.findCustomer(name);
     }
 
@@ -41,5 +41,23 @@ public class CustomerFuncService implements CustomerService{
     @Override
     public void updateCustomer(String firstname, String secondname){
         customerInterface.updateCustomer(firstname, secondname);
+    }
+
+    @Override
+    public Customer getCustomer(String firstname, String secondname){
+        List<Customer> allCustomers = showAllCustomers();
+        Customer customer = null;
+        for(Customer c : allCustomers){
+            if(c.getFirstname().equalsIgnoreCase(firstname) && c.getSecondname().equalsIgnoreCase(secondname)){
+                customer = c;
+                break;
+            }
+        }
+        return customer;
+    }
+
+    @Override
+    public void setCustomer(Customer customer){
+        customerInterface.setCustomer(customer);
     }
 }

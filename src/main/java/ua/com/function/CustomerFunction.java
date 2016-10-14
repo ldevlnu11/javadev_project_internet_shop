@@ -31,11 +31,11 @@ public class CustomerFunction implements CustomerInterface{
     }
 
     @Transactional
-    public Customer findCustomer(String name){
-        Customer customer = null;
+    public List<Customer> findCustomer(String name){
+        List<Customer> customer = null;
         try{
-            customer = (Customer)man.createQuery("select c from" + customerTable + "c where c.firstname =:name or c.secondname =:name ")
-                    .setParameter("name", name).getSingleResult();
+            customer = man.createQuery("select c from" + customerTable + "c where c.firstname =:fname or c.secondname =:sname ")
+                    .setParameter("fname", name).setParameter("sname", name).getResultList();
         }catch(NoResultException e){
             System.out.println("Пользователь с данным именем или фамилией не найден.");
         }
@@ -46,7 +46,7 @@ public class CustomerFunction implements CustomerInterface{
     public void deleteCustomer(String firstname, String secondname){
         Customer customer = null;
         try{
-            customer = (Customer)man.createQuery("select c from" + customerTable + "c where c.firstname =:firstname or c.secondname =:secondname")
+            customer = (Customer)man.createQuery("select c from" + customerTable + "c where c.firstname =:firstname and c.secondname =:secondname")
                     .setParameter("firstname", firstname)
                     .setParameter("secondname", secondname).getSingleResult();
         }catch(NoResultException e){
@@ -58,10 +58,17 @@ public class CustomerFunction implements CustomerInterface{
     }
 
     @Transactional
+    public void setCustomer(Customer customer){
+        if(customer != null){
+            man.merge(customer);
+        }
+    }
+
+    @Transactional
     public void updateCustomer(String firstname, String secondname){
         Customer customer = null;
         try{
-            customer = (Customer)man.createQuery("select c from" + customerTable + "c where c.firstname =:firstname or c.secondname =:secondname")
+            customer = (Customer)man.createQuery("select c from" + customerTable + "c where c.firstname =:firstname and c.secondname =:secondname")
                     .setParameter("firstname", firstname)
                     .setParameter("secondname", secondname).getSingleResult();
         }catch(NoResultException e){

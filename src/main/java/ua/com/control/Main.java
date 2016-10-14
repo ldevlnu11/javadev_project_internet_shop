@@ -5,20 +5,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ua.com.entity.Customer;
 import ua.com.entity.Offer;
 import ua.com.entity.Product;
-import ua.com.entity.User;
-import ua.com.function.CustomerFunction;
-import ua.com.function.OfferFunction;
-import ua.com.function.ProductFunction;
-import ua.com.function.UserFunction;
-import ua.com.gui.GUI;
+import ua.com.gui.menu_main.GUI;
 import ua.com.service.CustomerFuncService;
 import ua.com.service.OfferFuncService;
 import ua.com.service.ProductFuncService;
-import ua.com.service.UserFuncService;
 
-import javax.persistence.*;
-import javax.sound.midi.SysexMessage;
-import javax.swing.*;
 import java.util.Scanner;
 
 /**
@@ -31,11 +22,10 @@ public class Main{
     private static boolean xCustomer;
     private static boolean xProduct;
     private static boolean xOffer;
-    private static ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("appContext.xml");
+    public static ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("appContext.xml");
     private static OfferFuncService offerFunction = (OfferFuncService) context.getBean("OfferService");
     private static CustomerFuncService customerFunction = (CustomerFuncService) context.getBean("CustomerService");
     private static ProductFuncService productFunction = (ProductFuncService) context.getBean("ProductService");
-    public static UserFuncService userFunction = (UserFuncService) context.getBean("UserService");
 
     static{
         sc = new Scanner(System.in);
@@ -50,14 +40,14 @@ public class Main{
 
         new GUI().run();
 
-        while(isActive){
+        while(!isActive){
             xCustomer = true;
             xProduct = true;
             xOffer = true;
             showFunctional();
             switch(sc.next()){
                 case "1":{
-                    while(!xCustomer){
+                    while(xCustomer){
                         showFunctionalCustomer();
                         switch(sc.next()){
                             case "1":{

@@ -137,16 +137,16 @@ public class Customer{
 
     @Override
     public String toString(){
-        return "\n"+"Customer{" +
-                "firstname='" + firstname + '\'' +
-                ", secondname='" + secondname + '\'' +
-                ", fathername='" + fathername + '\'' +
-                ", phone='" + phone + '\'' +
-                ", city='" + city + '\'' +
-                ", province='" + province + '\'' +
-                ", region='" + region + '\'' +
-                ", street='" + street + '\'' +
-                ", number=" + number +
-                '}';
+        return "\n"+"Посетитель: " +
+                "имя: '" + firstname + '\'' +
+                ", фамилия: '" + secondname + '\'' +
+                ", отчество: '" + fathername + '\'' +
+                ", номер телефона: '" + phone + '\'' +
+                ", город: '" + city + '\'' +
+                ", область: '" + province + '\'' +
+                ", район: '" + region + '\'' +
+                ", улица: '" + street + '\'' +
+                ", номер дома: " + number +
+                '.';
     }
 }
