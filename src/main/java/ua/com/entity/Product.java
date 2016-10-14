@@ -1,5 +1,8 @@
 package ua.com.entity;
 
+import ua.com.control.Main;
+import ua.com.service.ProductFuncService;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +21,8 @@ public class Product{
     private String product_name;
     @Column(nullable = false, columnDefinition = "NCHAR(128)")
     private String product_code;
-    private float product_price;
-    private int product_number;
+    private String product_price;
+    private String product_number;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "offer_product", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "offer_id"))
     private List<Offer> offerList;
@@ -27,8 +30,23 @@ public class Product{
     public Product(){
     }
 
-    public Product(String product_name, String product_code, float product_price, int product_number){
+    public Product(String product_name, String product_price, String product_number){
         this.product_name = product_name;
+        ProductFuncService productService = (ProductFuncService)Main.context.getBean("ProductService");
+        String product_code = product_name.toUpperCase().replaceAll("[А, О, У, Е, Я, Ю, Й, И, Ы, Ь, Ъ]","");
+        List<Product> product_codes = productService.showAllProducts();
+        boolean x = true;
+        while(x){
+            for(Product p : product_codes){
+                if(p.getProduct_code().equalsIgnoreCase(product_code)){
+                    product_code += (int)(Math.random() * 10);
+                }else{
+                    break;
+                }
+            }
+            break;
+        }
+        while(product_code.length() < 3){product_code += (int)(Math.random() * 10);};
         this.product_code = product_code;
         this.product_price = product_price;
         this.product_number = product_number;
@@ -58,19 +76,19 @@ public class Product{
         this.product_code = product_code;
     }
 
-    public float getProduct_price(){
+    public String getProduct_price(){
         return product_price;
     }
 
-    public void setProduct_price(float product_price){
+    public void setProduct_price(String product_price){
         this.product_price = product_price;
     }
 
-    public int getProduct_number(){
+    public String getProduct_number(){
         return product_number;
     }
 
-    public void setProduct_number(int product_number){
+    public void setProduct_number(String product_number){
         this.product_number = product_number;
     }
 

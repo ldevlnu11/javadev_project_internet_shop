@@ -42,6 +42,21 @@ public class CreateMenu_Customer extends Thread{
             @Override
             public void actionPerformed(ActionEvent e){
                 try{
+                    if(fathername_field.getText().isEmpty()){
+                        fathername_field.setText("Не указано");
+                    }
+                    if(province_field.getText().isEmpty()){
+                        province_field.setText("Не указано");
+                    }
+                    if(region_field.getText().isEmpty()){
+                        region_field.setText("Не указано");
+                    }
+                    if(number_field.getText().isEmpty()){
+                        number_field.setText("Не указано");
+                    }
+                    if(street_field.getText().isEmpty()){
+                        street_field.setText("Не указано");
+                    }
                 Customer customer = new Customer(
                         firstname_field.getText(),
                         secondname_field.getText(),
@@ -51,7 +66,7 @@ public class CreateMenu_Customer extends Thread{
                         province_field.getText(),
                         region_field.getText(),
                         street_field.getText(),
-                        Integer.parseInt(number_field.getText()));
+                        number_field.getText());
                     customerService.createCustomer(customer);
                     JOptionPane.showMessageDialog(null, "Добавлен пользователь "+customer, "Добавлено!", JOptionPane.INFORMATION_MESSAGE);
                     firstname_field.setText("");

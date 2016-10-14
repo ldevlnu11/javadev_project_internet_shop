@@ -91,7 +91,7 @@ public class UpdateMenu_Customer extends Thread{
                 customer.setProvince(newProvince_field.getText());
                 customer.setRegion(newRegion_field.getText());
                 customer.setStreet(newStreet_field.getText());
-                customer.setNumber(Integer.parseInt(newNumber_field.getText()));
+                customer.setNumber(newNumber_field.getText());
                 customerService.setCustomer(customer);
                 frame.dispose();
             }

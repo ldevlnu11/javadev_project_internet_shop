@@ -51,7 +51,7 @@ public class Main{
                         showFunctionalCustomer();
                         switch(sc.next()){
                             case "1":{
-                                String firstname, secondname, fathername, city, province, region, street, phone; int number;
+                                String firstname, secondname, fathername, city, province, region, street, phone, number;
                                 System.out.println("Введите имя");
                                 firstname = sc.next();
                                 System.out.println("Введите фамилию");
@@ -67,7 +67,7 @@ public class Main{
                                 System.out.println("Введите улицу(если есть)");
                                 street = sc.next();
                                 System.out.println("Введите номер дома(если есть)");
-                                number = sc.nextInt();
+                                number = sc.next();
                                 System.out.println("Введите номер телефона");
                                 phone = sc.next();
                                 customerFunction.createCustomer(new Customer(firstname, secondname, fathername, phone, city, province, region, street, number));
@@ -140,17 +140,15 @@ public class Main{
                         switch(sc.next()){
                             case "1":{
                                 String name, code;
-                                int number;
-                                float price;
+                                String number;
+                                String price;
                                 System.out.println("Введите имя товара");
                                 name = sc.next();
-                                System.out.println("Введите код товара");
-                                code = sc.next();
                                 System.out.println("Введите цену товара");
-                                price = sc.nextFloat();
+                                price = sc.next();
                                 System.out.println("Введите кол-во товара");
-                                number = sc.nextInt();
-                                productFunction.addProduct(new Product(name, code, price, number));
+                                number = sc.next();
+                                productFunction.addProduct(new Product(name, price, number));
                                 break;
                             }
                             case "2":{

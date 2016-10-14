@@ -2,6 +2,7 @@ package ua.com.gui.menu_main;
 
 import ua.com.gui.menu_main.menu_customer.Menu_Customer;
 import ua.com.gui.menu_main.menu_offer.Menu_Offer;
+import ua.com.gui.menu_main.menu_product.Menu_Product;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -29,6 +30,12 @@ public class GUI extends Thread{
             @Override
             public void actionPerformed(ActionEvent e){
                 new Menu_Offer().run();
+            }
+        });
+        menu_product.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                new Menu_Product().run();
             }
         });
     }

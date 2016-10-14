@@ -119,7 +119,7 @@ public class CustomerFunction implements CustomerInterface{
                         break;
                     }case "8":{
                         System.out.println("Введите новый номер дома");
-                        customer.setNumber(sc.nextInt());
+                        customer.setNumber(sc.next());
                         break;
                     }case "9":{
                         System.out.println("Введите новый номер телефона");

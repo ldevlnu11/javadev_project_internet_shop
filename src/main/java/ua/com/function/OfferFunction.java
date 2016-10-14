@@ -42,6 +42,6 @@ public class OfferFunction implements OfferInterface{
 
     @Transactional
     public List<Offer> findUncomplitedOffers(){
-        return man.createQuery("select o from"+offerTable+"o where o.offer_status = 'Неотправлен'").getResultList();
+        return man.createQuery("select o from"+offerTable+"o where o.offer_status = 'Неотправлено'").getResultList();
     }
 }

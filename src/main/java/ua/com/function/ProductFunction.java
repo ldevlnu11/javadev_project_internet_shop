@@ -61,7 +61,7 @@ public class ProductFunction implements ProductInterface{
         }catch(NoResultException e){
             System.out.println("Не найден товар с данным кодом");
         }
-        product.setProduct_number(product.getProduct_number()-number);
+        product.setProduct_number(""+(Integer.parseInt(product.getProduct_number())-number));
         man.merge(product);
     }
 }

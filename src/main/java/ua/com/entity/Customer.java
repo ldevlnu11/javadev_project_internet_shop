@@ -28,14 +28,14 @@ public class Customer{
     private String region; // район
     @Column(columnDefinition = "NCHAR(128)")
     private String street;
-    private int number;
+    private String number;
     @OneToMany(mappedBy = "customer")
     private List<Offer> offerList = new ArrayList<Offer>();
 
     public Customer(){
 
     }
-    public Customer(String firstname, String secondname, String fathername, String phone, String city, String province, String region, String street, int number){
+    public Customer(String firstname, String secondname, String fathername, String phone, String city, String province, String region, String street, String number){
         this.firstname = firstname;
         this.secondname = secondname;
         this.fathername = fathername;
@@ -119,11 +119,11 @@ public class Customer{
         this.street = street;
     }
 
-    public int getNumber(){
+    public String getNumber(){
         return number;
     }
 
-    public void setNumber(int number){
+    public void setNumber(String number){
         this.number = number;
     }
 

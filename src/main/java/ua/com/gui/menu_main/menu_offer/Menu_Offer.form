@@ -10,7 +10,7 @@
     <children>
       <component id="1164" class="javax.swing.JButton" binding="createOffer_button">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Оформить заказ"/>
@@ -18,7 +18,7 @@
       </component>
       <component id="36b17" class="javax.swing.JButton" binding="deleteComplitedOffer_button">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Удалить отправленые заказы"/>
@@ -26,7 +26,7 @@
       </component>
       <component id="5008f" class="javax.swing.JButton" binding="showAllOffer_button">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Посмотреть все заказы"/>
@@ -34,10 +34,10 @@
       </component>
       <component id="906f3" class="javax.swing.JButton" binding="showUncomplitedOffer_button">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Показать неотправленые заказы"/>
+          <text value="Неотправленые заказы"/>
         </properties>
       </component>
     </children>
