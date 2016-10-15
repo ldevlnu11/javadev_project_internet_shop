@@ -58,46 +58,49 @@ public class UpdateMenu_Customer extends Thread{
         updateCustomer_button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                ArrayList<JFormattedTextField> newFieldList = new ArrayList<JFormattedTextField>();
-                newFieldList.add(newFname_field);
-                newFieldList.add(newSname_field);
-                newFieldList.add(newFathername_field);
-                newFieldList.add(newPhone_field);
-                newFieldList.add(newCity_field);
-                newFieldList.add(newProvince_field);
-                newFieldList.add(newRegion_field);
-                newFieldList.add(newStreet_field);
-                newFieldList.add(newNumber_field);
-                ArrayList<JFormattedTextField> oldFieldList = new ArrayList<JFormattedTextField>();
-                oldFieldList.add(oldFname_field);
-                oldFieldList.add(oldSname_field);
-                oldFieldList.add(oldFathername_field);
-                oldFieldList.add(oldPhone_field);
-                oldFieldList.add(oldCity_field);
-                oldFieldList.add(oldProvince_field);
-                oldFieldList.add(oldRegion_field);
-                oldFieldList.add(oldStreet_field);
-                oldFieldList.add(oldNumber_field);
-                for(int i = 0; i < newFieldList.size(); i++){
-                    if(newFieldList.get(i).getText().isEmpty()){
-                        newFieldList.get(i).setText(oldFieldList.get(i).getText());
+                try{
+                    ArrayList<JFormattedTextField> newFieldList = new ArrayList<JFormattedTextField>();
+                    newFieldList.add(newFname_field);
+                    newFieldList.add(newSname_field);
+                    newFieldList.add(newFathername_field);
+                    newFieldList.add(newPhone_field);
+                    newFieldList.add(newCity_field);
+                    newFieldList.add(newProvince_field);
+                    newFieldList.add(newRegion_field);
+                    newFieldList.add(newStreet_field);
+                    newFieldList.add(newNumber_field);
+                    ArrayList<JFormattedTextField> oldFieldList = new ArrayList<JFormattedTextField>();
+                    oldFieldList.add(oldFname_field);
+                    oldFieldList.add(oldSname_field);
+                    oldFieldList.add(oldFathername_field);
+                    oldFieldList.add(oldPhone_field);
+                    oldFieldList.add(oldCity_field);
+                    oldFieldList.add(oldProvince_field);
+                    oldFieldList.add(oldRegion_field);
+                    oldFieldList.add(oldStreet_field);
+                    oldFieldList.add(oldNumber_field);
+                    for(int i = 0; i < newFieldList.size(); i++){
+                        if(newFieldList.get(i).getText().isEmpty()){
+                            newFieldList.get(i).setText(oldFieldList.get(i).getText());
+                        }
                     }
+                    customer.setFirstname(newFname_field.getText());
+                    customer.setSecondname(newSname_field.getText());
+                    customer.setFathername(newFathername_field.getText());
+                    customer.setPhone(newPhone_field.getText());
+                    customer.setCity(newCity_field.getText());
+                    customer.setProvince(newProvince_field.getText());
+                    customer.setRegion(newRegion_field.getText());
+                    customer.setStreet(newStreet_field.getText());
+                    customer.setNumber(newNumber_field.getText());
+                    customerService.setCustomer(customer);
+                    frame.dispose();
+                }catch(NullPointerException a){
+                    JOptionPane.showMessageDialog(null, "Пользователь не найден.", "Ошибка", JOptionPane.WARNING_MESSAGE);
                 }
-                customer.setFirstname(newFname_field.getText());
-                customer.setSecondname(newSname_field.getText());
-                customer.setFathername(newFathername_field.getText());
-                customer.setPhone(newPhone_field.getText());
-                customer.setCity(newCity_field.getText());
-                customer.setProvince(newProvince_field.getText());
-                customer.setRegion(newRegion_field.getText());
-                customer.setStreet(newStreet_field.getText());
-                customer.setNumber(newNumber_field.getText());
-                customerService.setCustomer(customer);
-                frame.dispose();
             }
         });
     }
-
     @Override
     public void run(){
         frame = new JFrame("Меню изменения посетителя");

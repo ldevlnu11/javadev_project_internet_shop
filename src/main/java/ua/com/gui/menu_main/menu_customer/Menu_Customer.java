@@ -1,7 +1,10 @@
 package ua.com.gui.menu_main.menu_customer;
 
+import ua.com.control.Main;
 import ua.com.gui.menu_main.menu_customer.CreateMenu_Customer;
+import ua.com.service.CustomerFuncService;
 
+import javax.persistence.NoResultException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +24,7 @@ public class Menu_Customer extends Thread{
     private JButton create_customer;
     private JPanel panel_Customer;
     private JFrame frame;
+    private CustomerFuncService customerService = (CustomerFuncService)Main.context.getBean("CustomerService");
 
     public Menu_Customer(){
         frame = new JFrame("Меню посетителя");
@@ -43,19 +47,42 @@ public class Menu_Customer extends Thread{
         showAll_customer.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                new ShowAllMenu_Customer().run();
+                JOptionPane.showMessageDialog(null, customerService.showAllCustomers(), "Все посетители", JOptionPane.INFORMATION_MESSAGE);
             }
         });
         findOne_customer.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                new FindMenu_Customer().run();
-            }
+                String name = JOptionPane.showInputDialog(null, "Введите имя или фамилию посетителя", "Имя или фамилия", JOptionPane.INFORMATION_MESSAGE);
+                if(name.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Поле имя или фамилия не может быть пустым!", "Ошибка", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    try{
+                        JOptionPane.showMessageDialog(null, customerService.findCustomer(name), "Результат", JOptionPane.INFORMATION_MESSAGE);
+                    }catch(Exception a){
+                        JOptionPane.showMessageDialog(null, "Посетитель с именем или фамилией \""+name+"\" не найден.", "Результат", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }            }
         });
         delete_customer.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                new DeleteMenu_Customer().run();
+                String fname = JOptionPane.showInputDialog(null, "Введите имя посетителя", "Имя или фамилия", JOptionPane.INFORMATION_MESSAGE),
+                        sname = JOptionPane.showInputDialog(null, "Введите фамилию посетителя", "Имя или фамилия", JOptionPane.INFORMATION_MESSAGE);
+                if(fname.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Поле имя не может быть пустым!", "Ошибка", JOptionPane.ERROR_MESSAGE);
+                }else if(sname.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Поле фамилия не может быть пустым!", "Ошибка", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    try{
+                        customerService.deleteCustomer(fname, sname);
+                        JOptionPane.showMessageDialog(null,
+                                "Удален посетитель " + fname + " " + sname,
+                                "Удалено", JOptionPane.INFORMATION_MESSAGE);
+                    }catch(Exception a){
+                        JOptionPane.showMessageDialog(null, "Посетитель с именем +\""+fname+"\" и фамилией \""+sname+"\" не найден.", "Результат", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
             }
         });
         TODO.addActionListener(new ActionListener(){

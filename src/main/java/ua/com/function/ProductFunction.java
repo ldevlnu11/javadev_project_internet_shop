@@ -31,23 +31,15 @@ public class ProductFunction implements ProductInterface{
 
     @Transactional
     public Product findProduct(String product_code){
-        Product product = null;
-        try{
+        Product product;
             product = (Product)man.createQuery("select p from"+productTable+"p where p.product_code =:product_code").setParameter("product_code", product_code).getSingleResult();
-        }catch(NoResultException e){
-            System.out.println("Не найден товар с данным кодом");
-        }
         return product;
     }
 
     @Transactional
     public void deleteProduct(String product_code){
-        Product product = null;
-        try{
+        Product product;
             product = (Product)man.createQuery("select p from"+productTable+"p where p.product_code =:product_code").setParameter("product_code", product_code).getSingleResult();
-        }catch(NoResultException e){
-            System.out.println("Не найден товар с данным кодом");
-        }
         if(product != null){
             man.remove(product);
         }

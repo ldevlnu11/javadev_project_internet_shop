@@ -19,7 +19,6 @@ public class CreateMenu_Product extends Thread{
     private JFormattedTextField priceProduct_field;
     private JFormattedTextField nameProduct_field;
     private ProductFuncService productService = (ProductFuncService)Main.context.getBean("ProductService");
-    private boolean isReadyToCreate1,isReadyToCreate2;
 
 
     public CreateMenu_Product() {
@@ -28,11 +27,9 @@ public class CreateMenu_Product extends Thread{
             public void actionPerformed(ActionEvent e){
                 if(nameProduct_field.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null, "Поле имя не может быть пустое!", "Ошибка!", JOptionPane.ERROR_MESSAGE);
-                }else{isReadyToCreate1 = true;}
-                if(numberProduct_field.getText().isEmpty()){
+                }else if(numberProduct_field.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null, "Поле кол-во не может быть пустое!", "Ошибка!", JOptionPane.ERROR_MESSAGE);
-                }else{isReadyToCreate2 = true;}
-                if(isReadyToCreate1 && isReadyToCreate2){
+                }else{
                     Product product = new Product(nameProduct_field.getText(), priceProduct_field.getText(), numberProduct_field.getText());
                     productService.addProduct(product);
                     JOptionPane.showMessageDialog(null, product.toString()+" был добавлен", "Добавлено", JOptionPane.INFORMATION_MESSAGE);

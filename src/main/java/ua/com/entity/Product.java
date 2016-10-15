@@ -103,10 +103,10 @@ public class Product{
     @Override
     public String toString(){
         return "\n"+"Product{" +
-                "product_name='" + product_name + '\'' +
-                ", product_code='" + product_code + '\'' +
-                ", product_price=" + product_price +
-                ", product_number=" + product_number +
+                "Имя: " + product_name + '\'' +
+                ", Код: " + product_code + '\'' +
+                ", Цена: " + product_price +
+                ", Количество: " + product_number +
                 '}';
     }
 }

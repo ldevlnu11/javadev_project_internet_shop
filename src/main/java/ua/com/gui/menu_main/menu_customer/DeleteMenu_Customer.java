@@ -25,10 +25,7 @@ public class DeleteMenu_Customer extends Thread{
         deleteCustomer_button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                customerService.deleteCustomer(firstname_field.getText(), secondname_field.getText());
-                JOptionPane.showMessageDialog(null,
-                        "Удален посетитель "+firstname_field.getText()+" "+secondname_field.getText(),
-                        "Удалено", JOptionPane.INFORMATION_MESSAGE);
+
                 firstname_field.setText("");
                 secondname_field.setText("");
             }

@@ -32,26 +32,18 @@ public class CustomerFunction implements CustomerInterface{
 
     @Transactional
     public List<Customer> findCustomer(String name){
-        List<Customer> customer = null;
-        try{
-            customer = man.createQuery("select c from" + customerTable + "c where c.firstname =:fname or c.secondname =:sname ")
+        List<Customer> customer;
+        customer = man.createQuery("select c from" + customerTable + "c where c.firstname =:fname or c.secondname =:sname ")
                     .setParameter("fname", name).setParameter("sname", name).getResultList();
-        }catch(NoResultException e){
-            System.out.println("Пользователь с данным именем или фамилией не найден.");
-        }
         return customer;
     }
 
     @Transactional
     public void deleteCustomer(String firstname, String secondname){
-        Customer customer = null;
-        try{
+        Customer customer;
             customer = (Customer)man.createQuery("select c from" + customerTable + "c where c.firstname =:firstname and c.secondname =:secondname")
                     .setParameter("firstname", firstname)
                     .setParameter("secondname", secondname).getSingleResult();
-        }catch(NoResultException e){
-            System.out.println("Пользователь с данным именем и фамилией не найден.");
-        }
         if(customer != null){
             man.remove(customer);
         }
@@ -67,13 +59,9 @@ public class CustomerFunction implements CustomerInterface{
     @Transactional
     public void updateCustomer(String firstname, String secondname){
         Customer customer = null;
-        try{
             customer = (Customer)man.createQuery("select c from" + customerTable + "c where c.firstname =:firstname and c.secondname =:secondname")
                     .setParameter("firstname", firstname)
                     .setParameter("secondname", secondname).getSingleResult();
-        }catch(NoResultException e){
-            System.out.println("Пользователь с данным именем и фамилией не найден.");
-        }
         if(customer != null){
             int x = 0;
             while(x != 1){

@@ -7,6 +7,7 @@ import ua.com.service.CustomerFuncService;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,15 +24,6 @@ public class CreateMenu_Customer extends Thread{
     private JFormattedTextField street_field;
     private JFormattedTextField number_field;
     private JFormattedTextField phone_field;
-    private JLabel firstname_lab;
-    private JLabel secondname_lab;
-    private JLabel fathername_lab;
-    private JLabel city_lab;
-    private JLabel province_lab;
-    private JLabel region_lab;
-    private JLabel street_lab;
-    private JLabel number_lab;
-    private JLabel phone_lab;
     private JButton createCustomer_button;
     private JPanel customer_panel;
     private JFrame frame = new JFrame();
@@ -41,46 +33,39 @@ public class CreateMenu_Customer extends Thread{
         createCustomer_button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                try{
-                    if(fathername_field.getText().isEmpty()){
-                        fathername_field.setText("Не указано");
-                    }
-                    if(province_field.getText().isEmpty()){
-                        province_field.setText("Не указано");
-                    }
-                    if(region_field.getText().isEmpty()){
-                        region_field.setText("Не указано");
-                    }
-                    if(number_field.getText().isEmpty()){
-                        number_field.setText("Не указано");
-                    }
-                    if(street_field.getText().isEmpty()){
-                        street_field.setText("Не указано");
-                    }
-                Customer customer = new Customer(
-                        firstname_field.getText(),
-                        secondname_field.getText(),
-                        fathername_field.getText(),
-                        phone_field.getText(),
-                        city_field.getText(),
-                        province_field.getText(),
-                        region_field.getText(),
-                        street_field.getText(),
-                        number_field.getText());
-                    customerService.createCustomer(customer);
-                    JOptionPane.showMessageDialog(null, "Добавлен пользователь "+customer, "Добавлено!", JOptionPane.INFORMATION_MESSAGE);
-                    firstname_field.setText("");
-                    secondname_field.setText("");
-                    fathername_field.setText("");
-                    city_field.setText("");
-                    province_field.setText("");
-                    region_field.setText("");
-                    street_field.setText("");
-                    number_field.setText("");
-                    phone_field.setText("");
+                if(firstname_field.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Поле имя не может быть пустое!", "Ошибка!", JOptionPane.ERROR_MESSAGE);
+                }else if(secondname_field.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Поле фамилия не может быть пустое!", "Ошибка!", JOptionPane.ERROR_MESSAGE);
+                }else if(city_field.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Поле город не может быть пустое!", "Ошибка!", JOptionPane.ERROR_MESSAGE);
+                }else if(phone_field.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Поле номер телефона не может быть пустое!", "Ошибка!", JOptionPane.ERROR_MESSAGE);
+                }else{
                     frame.dispose();
-                }catch(Exception exc){
-                    JOptionPane.showMessageDialog(null, "Error!", "Error", JOptionPane.ERROR_MESSAGE);
+                    List<JFormattedTextField> unReuiredFields = new ArrayList<JFormattedTextField>();
+                    unReuiredFields.add(fathername_field);
+                    unReuiredFields.add(province_field);
+                    unReuiredFields.add(region_field);
+                    unReuiredFields.add(number_field);
+                    unReuiredFields.add(street_field);
+                    for(JFormattedTextField iField : unReuiredFields){
+                        if(iField.getText().isEmpty()){
+                            iField.setText("Не указано");
+                        }
+                    }
+                    Customer customer = new Customer(
+                            firstname_field.getText(),
+                            secondname_field.getText(),
+                            fathername_field.getText(),
+                            phone_field.getText(),
+                            city_field.getText(),
+                            province_field.getText(),
+                            region_field.getText(),
+                            street_field.getText(),
+                            number_field.getText());
+                    customerService.createCustomer(customer);
+                    JOptionPane.showMessageDialog(null, "Добавлен пользователь " + customer, "Добавлено!", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
