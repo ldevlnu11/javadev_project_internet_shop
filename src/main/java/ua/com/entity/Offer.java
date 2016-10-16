@@ -71,9 +71,8 @@ public class Offer{
 
     @Override
     public String toString(){
-        return "\n"+"Offer{" +
-                "offer_status='" + offer_status + '\'' +
-                ", offer_date=" + offer_date +
-                '}';
+        return "\n" +
+                "Статус заказа: " + offer_status + '\'' +
+                ", Дата заказа: " + offer_date;
     }
 }

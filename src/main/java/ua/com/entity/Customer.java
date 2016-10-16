@@ -137,8 +137,8 @@ public class Customer{
 
     @Override
     public String toString(){
-        return "\n"+"Посетитель: " +
-                "имя: '" + firstname + '\'' +
+        return "\n"+
+                "Имя: '" + firstname + '\'' +
                 ", фамилия: '" + secondname + '\'' +
                 ", отчество: '" + fathername + '\'' +
                 ", номер телефона: '" + phone + '\'' +

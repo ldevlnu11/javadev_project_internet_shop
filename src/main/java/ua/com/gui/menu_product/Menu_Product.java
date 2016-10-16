@@ -1,4 +1,4 @@
-package ua.com.gui.menu_main.menu_product;
+package ua.com.gui.menu_product;
 
 import ua.com.control.Main;
 import ua.com.service.ProductFuncService;
@@ -31,7 +31,18 @@ public class Menu_Product extends Thread{
         deleteProduct_button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                new DeleteMenu_Product().run();
+                String product_code = JOptionPane.showInputDialog(null, "Введите код товара", "Код", JOptionPane.INFORMATION_MESSAGE);
+                try{
+                    if(product_code.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Поле код товара не может быть пустым!", "Ошибка", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        productService.deleteProduct(product_code);
+                        JOptionPane.showMessageDialog(null, "Товар с кодом \""+product_code+"\" удален.", "Удалено", JOptionPane.INFORMATION_MESSAGE);
+                        frame.dispose();
+                    }
+                }catch(Exception a){
+                    JOptionPane.showMessageDialog(null, "Товар с кодом \""+product_code+"\" не найден.", "Ошибка", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
         findProduct_button.addActionListener(new ActionListener(){

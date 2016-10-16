@@ -1,4 +1,4 @@
-package ua.com.gui.menu_main.menu_customer;
+package ua.com.gui.menu_customer;
 
 import ua.com.control.Main;
 import ua.com.entity.Customer;

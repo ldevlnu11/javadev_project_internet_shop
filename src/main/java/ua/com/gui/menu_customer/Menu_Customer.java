@@ -1,16 +1,13 @@
-package ua.com.gui.menu_main.menu_customer;
+package ua.com.gui.menu_customer;
 
 import ua.com.control.Main;
-import ua.com.gui.menu_main.menu_customer.CreateMenu_Customer;
+import ua.com.entity.Customer;
 import ua.com.service.CustomerFuncService;
 
-import javax.persistence.NoResultException;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static javax.print.attribute.standard.MediaSizeName.D;
+import java.util.List;
 
 /**
  * Created by devnull on 13.10.16.
@@ -57,10 +54,11 @@ public class Menu_Customer extends Thread{
                 if(name.isEmpty()){
                     JOptionPane.showMessageDialog(null, "Поле имя или фамилия не может быть пустым!", "Ошибка", JOptionPane.ERROR_MESSAGE);
                 }else{
-                    try{
-                        JOptionPane.showMessageDialog(null, customerService.findCustomer(name), "Результат", JOptionPane.INFORMATION_MESSAGE);
-                    }catch(Exception a){
+                    List<Customer> customerList = customerService.findCustomer(name);
+                    if(customerList.isEmpty()){
                         JOptionPane.showMessageDialog(null, "Посетитель с именем или фамилией \""+name+"\" не найден.", "Результат", JOptionPane.INFORMATION_MESSAGE);
+                    }else{
+                        JOptionPane.showMessageDialog(null, customerList, "Результат", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }            }
         });
@@ -80,7 +78,7 @@ public class Menu_Customer extends Thread{
                                 "Удален посетитель " + fname + " " + sname,
                                 "Удалено", JOptionPane.INFORMATION_MESSAGE);
                     }catch(Exception a){
-                        JOptionPane.showMessageDialog(null, "Посетитель с именем +\""+fname+"\" и фамилией \""+sname+"\" не найден.", "Результат", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Посетитель с именем \""+fname+"\" и фамилией \""+sname+"\" не найден.", "Результат", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }

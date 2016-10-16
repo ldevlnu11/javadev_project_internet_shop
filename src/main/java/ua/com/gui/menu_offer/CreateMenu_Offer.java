@@ -1,4 +1,4 @@
-package ua.com.gui.menu_main.menu_offer;
+package ua.com.gui.menu_offer;
 
 import ua.com.control.Main;
 import ua.com.entity.Offer;

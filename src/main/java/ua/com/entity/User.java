@@ -92,13 +92,10 @@ public class User{
 
     @Override
     public String toString(){
-        return "UserInterface{" +
-                "firstname='" + firstname + '\'' +
-                ", secondname='" + secondname + '\'' +
-                ", login='" + login + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "\n"+"Имя: " + firstname + '\'' +
+                ", фамилия: '" + secondname + '\'' +
+                ", логин: " + login + '\'' +
+                ", электронная почта: " + email + '\'' +
+                ", телефон: " + phone + '\''+".";
     }
 }

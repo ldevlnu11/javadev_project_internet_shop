@@ -1,4 +1,4 @@
-package ua.com.gui.menu_main.menu_offer;
+package ua.com.gui.menu_offer;
 
 import ua.com.control.Main;
 import ua.com.service.OfferFuncService;
@@ -32,13 +32,13 @@ public class Menu_Offer extends Thread{
         showAllOffer_button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                new ShowAllMenu_Offer().run();
+                JOptionPane.showMessageDialog(null, offerService.showAllOffers(), "Результат", JOptionPane.INFORMATION_MESSAGE);
             }
         });
         showUncomplitedOffer_button.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                new ShowUncomplitedMenu_Offer().run();
+                JOptionPane.showMessageDialog(null, offerService.findUncomplitedOffers(), "Результат", JOptionPane.INFORMATION_MESSAGE);
             }
         });
         createOffer_button.addActionListener(new ActionListener(){
@@ -57,4 +57,5 @@ public class Menu_Offer extends Thread{
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.add(main_panel);
     }
+
 }
