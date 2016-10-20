@@ -1,7 +1,7 @@
 package ua.com.entity;
 
-import ua.com.control.Main;
-import ua.com.service.ProductFuncService;
+import ua.com.controller.Main;
+import ua.com.serviceImp.ProductFuncService;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
 package ua.com.gui.menu_customer;
 
-import ua.com.control.Main;
+import ua.com.controller.Main;
 import ua.com.entity.Customer;
-import ua.com.service.CustomerFuncService;
+import ua.com.serviceImp.CustomerFuncService;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

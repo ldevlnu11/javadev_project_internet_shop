@@ -1,7 +1,7 @@
 package ua.com.gui.menu_product;
 
-import ua.com.control.Main;
-import ua.com.service.ProductFuncService;
+import ua.com.controller.Main;
+import ua.com.serviceImp.ProductFuncService;
 
 import javax.persistence.NoResultException;
 import javax.swing.*;

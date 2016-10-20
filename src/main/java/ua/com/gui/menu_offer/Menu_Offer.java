@@ -1,7 +1,7 @@
 package ua.com.gui.menu_offer;
 
-import ua.com.control.Main;
-import ua.com.service.OfferFuncService;
+import ua.com.controller.Main;
+import ua.com.serviceImp.OfferFuncService;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

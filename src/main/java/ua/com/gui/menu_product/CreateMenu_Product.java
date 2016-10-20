@@ -1,8 +1,8 @@
 package ua.com.gui.menu_product;
 
-import ua.com.control.Main;
+import ua.com.controller.Main;
 import ua.com.entity.Product;
-import ua.com.service.ProductFuncService;
+import ua.com.serviceImp.ProductFuncService;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

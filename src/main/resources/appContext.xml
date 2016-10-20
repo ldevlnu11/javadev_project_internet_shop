@@ -17,30 +17,21 @@
                         http://www.springframework.org/schema/task
                         http://www.springframework.org/schema/task/spring-task-3.2.xsd
                         ">
-    <!-- component-scan scans your packages for annotations to create bean. By default it scans ALL Spring annotations -->
-    <!-- component-scan сканує пакети на наявність анотацій, щоб створити bean. За замовчуванням сканує УСІ анотації Spring -->
     <context:component-scan base-package="ua.com.*"></context:component-scan>
 
-    <!-- Activation of transactional annotation -->
-    <!-- Активація анотації transactional. transaction manager посилається на нижче описаний transactionManager bean -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <!-- Description of entityManagerFactory -->
-    <!-- Опис entityManagerFactory bean -->
     <bean id="EntityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
         </property>
-        <!-- Location of persistence.xml in which are all configurations to DB -->
-        <!-- Розташування persistence.xml в якому є всі налаштування до бази даних -->
         <property name="persistenceXmlLocation" value="classpath:/META-INF/persistence.xml"></property>
         <property name="persistenceUnitName" value="primary"></property>
     </bean>
 
-    <!-- Description of transactionManager bean for annotation transactional -->
-    <!-- Опис  transactionManager bean для анотації transactional -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="EntityManagerFactory"></property>
     </bean>
+    
 </beans>
