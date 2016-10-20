@@ -2,7 +2,7 @@ package ua.com.gui.menu_offer;
 
 import ua.com.controller.Main;
 import ua.com.entity.Offer;
-import ua.com.serviceImp.OfferFuncService;
+import ua.com.serviceImp.OfferServiceImp;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +17,7 @@ public class CreateMenu_Offer extends Thread{
     private JPanel createMenu_panel;
     private JButton createOffer_button;
     private JComboBox status_combobox;
-    private OfferFuncService offerService = (OfferFuncService)Main.context.getBean("OfferService");
+    private OfferServiceImp offerService = (OfferServiceImp)Main.context.getBean("OfferService");
 
     CreateMenu_Offer(){
         createOffer_button.addActionListener(new ActionListener(){

@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ua.com.entity.Product;
-import ua.com.serviceImp.ProductFuncService;
+import ua.com.serviceImp.ProductServiceImp;
 
 @Controller
 public class ProductController {
 	
 	@Autowired
-	private ProductFuncService productService;
+	private ProductServiceImp productService;
 	
 	@RequestMapping(value="/product", method = RequestMethod.GET)
 	public String product(Model model){

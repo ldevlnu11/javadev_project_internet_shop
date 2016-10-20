@@ -2,7 +2,7 @@ package ua.com.gui.menu_customer;
 
 import ua.com.controller.Main;
 import ua.com.entity.Customer;
-import ua.com.serviceImp.CustomerFuncService;
+import ua.com.serviceImp.CustomerServiceImp;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +21,7 @@ public class Menu_Customer extends Thread{
     private JButton create_customer;
     private JPanel panel_Customer;
     private JFrame frame;
-    private CustomerFuncService customerService = (CustomerFuncService)Main.context.getBean("CustomerService");
+    private CustomerServiceImp customerService = (CustomerServiceImp)Main.context.getBean("CustomerService");
 
     public Menu_Customer(){
         frame = new JFrame("Меню посетителя");

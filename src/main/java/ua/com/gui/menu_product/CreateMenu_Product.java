@@ -2,7 +2,7 @@ package ua.com.gui.menu_product;
 
 import ua.com.controller.Main;
 import ua.com.entity.Product;
-import ua.com.serviceImp.ProductFuncService;
+import ua.com.serviceImp.ProductServiceImp;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,7 +18,7 @@ public class CreateMenu_Product extends Thread{
     private JFormattedTextField numberProduct_field;
     private JFormattedTextField priceProduct_field;
     private JFormattedTextField nameProduct_field;
-    private ProductFuncService productService = (ProductFuncService)Main.context.getBean("ProductService");
+    private ProductServiceImp productService = (ProductServiceImp)Main.context.getBean("ProductService");
 
 
     public CreateMenu_Product() {

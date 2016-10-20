@@ -13,7 +13,5 @@ public interface CustomerService{
     List<Customer> showAllCustomers();
     List<Customer> findCustomer(String name);
     void deleteCustomer(String firstname, String secondname);
-    void updateCustomer(String firstname, String secondname);
-    Customer getCustomer(String firstname, String secondname);
-    void setCustomer(Customer customer);
+//    void updateCustomer(String firstname, String secondname);
 }

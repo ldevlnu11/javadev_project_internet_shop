@@ -1,7 +1,7 @@
 package ua.com.gui.menu_offer;
 
 import ua.com.controller.Main;
-import ua.com.serviceImp.OfferFuncService;
+import ua.com.serviceImp.OfferServiceImp;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,7 +18,7 @@ public class Menu_Offer extends Thread{
     private JButton deleteComplitedOffer_button;
     private JButton showAllOffer_button;
     private JButton showUncomplitedOffer_button;
-    private OfferFuncService offerService = (OfferFuncService)Main.context.getBean("OfferService");
+    private OfferServiceImp offerService = (OfferServiceImp)Main.context.getBean("OfferService");
 
     public Menu_Offer(){
 

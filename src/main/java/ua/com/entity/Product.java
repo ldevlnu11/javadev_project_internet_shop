@@ -1,10 +1,9 @@
 package ua.com.entity;
 
 import ua.com.controller.Main;
-import ua.com.serviceImp.ProductFuncService;
+import ua.com.serviceImp.ProductServiceImp;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,7 +31,7 @@ public class Product{
 
     public Product(String product_name, String product_price, String product_number){
         this.product_name = product_name;
-        ProductFuncService productService = (ProductFuncService)Main.context.getBean("ProductService");
+        ProductServiceImp productService = (ProductServiceImp)Main.context.getBean("ProductService");
         String product_code = product_name.toUpperCase().replaceAll("[А, О, У, Е, Я, Ю, Й, И, Ы, Ь, Ъ]","");
         List<Product> product_codes = productService.showAllProducts();
         boolean x = true;

@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Home</title>
+    <link type="text/css" rel="stylesheet" href="/resource/style.css" />
 </head>
 <body>
 You have successfully logged in!

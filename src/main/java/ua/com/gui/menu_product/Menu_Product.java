@@ -1,7 +1,7 @@
 package ua.com.gui.menu_product;
 
 import ua.com.controller.Main;
-import ua.com.serviceImp.ProductFuncService;
+import ua.com.serviceImp.ProductServiceImp;
 
 import javax.persistence.NoResultException;
 import javax.swing.*;
@@ -19,7 +19,7 @@ public class Menu_Product extends Thread{
     private JButton deleteProduct_button;
     private JButton findProduct_button;
     private JButton showAllProduct_button;
-    private ProductFuncService productService = (ProductFuncService)Main.context.getBean("ProductService");
+    private ProductServiceImp productService = (ProductServiceImp)Main.context.getBean("ProductService");
 
     public Menu_Product(){
         createProduct_button.addActionListener(new ActionListener(){
