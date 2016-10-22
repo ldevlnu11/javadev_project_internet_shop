@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="project_TODO:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="databases_hibernate-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="project_TODO:war exploded" />
+    </root>
+  </artifact>
+</component>
